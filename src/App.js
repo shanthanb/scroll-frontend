@@ -35,7 +35,7 @@ const App = () => {
   const fetchArticle = async () => {
 
 
-    const request = await fetch(`http://localhost:3001/app-api/v1/photo-gallery-feed-page/page/${pagination}`);
+    const request = await fetch(`http://localhost:5000/app-api/v1/photo-gallery-feed-page/page/${pagination}`);
 
     const response = await request.json();
 
@@ -52,8 +52,8 @@ const App = () => {
       <h1>ARTICLES INFINITE SCROLL</h1>
       <div className='card-container' onScroll={scroll}>
         <div className="wrap" style={{ height: "max-content" }}>
-          {article.map((article) => {
-            return (<div className='card-body'>
+          {article.map((article, i) => {
+            return (<div className='card-body' key={i}>
               <div className='card-media'>
                 <img src={article.node.field_photo_image_section} />
 
