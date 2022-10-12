@@ -30,22 +30,16 @@ const App = () => {
     console.log(e.target.scrollTop, e.target.scrollHeight - 800);
   }
 
+const fetchArticle = async () => {
 
 
-  const fetchArticle = async () => {
+ const request = await fetch(`http://localhost:5000/app-api/v1/photo-gallery-feed-page/page/${pagination}`);
 
+ const response = await request.json();
 
-    const request = await fetch(`http://localhost:5000/app-api/v1/photo-gallery-feed-page/page/${pagination}`);
-
-    const response = await request.json();
-
-    setArticle([...article, ...response.nodes]); //Updating articles.
-    setPagination(pagination + 1);
-
-
-  }
-
-
+  setArticle([...article, ...response.nodes]); //Updating articles.
+  setPagination(pagination + 1);
+}
   return (
     <div className='header'>
 
@@ -66,9 +60,7 @@ const App = () => {
             </div>
             )
           })
-
-
-          }
+}
         </div>
       </div>
 
